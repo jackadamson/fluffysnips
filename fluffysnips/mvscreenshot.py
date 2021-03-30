@@ -1,6 +1,10 @@
+import typer
 from pathlib import Path
 from datetime import datetime, timedelta
-import sys
+
+# import sys
+
+app = typer.Typer(add_completion=False)
 
 
 def pretty_delta(delta: timedelta):
@@ -14,10 +18,15 @@ def pretty_delta(delta: timedelta):
         return f"{delta.seconds // (60 * 60)} hours ago"
 
 
-def main():
-    if len(sys.argv) < 2:
-        print("Usage: mvscreenshot destination_name")
-    destination = Path(sys.argv[1]).resolve()
+@app.command()
+def main(
+    destination: Path,
+    markdown: bool = typer.Option(
+        False,
+        "-m",
+        help="Print markdown to use image",
+    ),
+):
     pictures_path = Path.home() / "Pictures"
     screenshots = list(pictures_path.glob("Screenshot from *.png"))
     screenshots.sort()
@@ -35,6 +44,15 @@ def main():
     confirm = input("Confirm [Y/n]: ")
     if confirm.lower() in {"y", "yes", ""}:
         last_screenshot.rename(destination)
+    if markdown:
+        if "docs" in destination.parts:
+            docs_index = destination.parts.index("docs")
+            docs_path = Path(*destination.parts[: docs_index + 1])
+            relative_path = destination.relative_to(docs_path)
+        else:
+            relative_path = destination
+        print("=" * 10)
+        print(f'![Screenshot](/{relative_path} "Screenshot")')
 
 
 if __name__ == "__main__":
