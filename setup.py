@@ -1,12 +1,19 @@
 import setuptools
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setuptools.setup(
     name="fluffysnips",
     version="0.0.1",
     author="Jack Adamson",
+    author_email="jack@mrfluffybunny.com",
     description="Various useful CLI tools",
     packages=setuptools.find_packages(),
     install_requires=[],
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/jackadamson/fluffysnips",
     classifiers=[
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
