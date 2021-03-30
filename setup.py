@@ -8,6 +8,7 @@ setuptools.setup(
     version="0.0.1",
     author="Jack Adamson",
     author_email="jack@mrfluffybunny.com",
+    license="MIT",
     description="Various useful CLI tools",
     packages=setuptools.find_packages(),
     install_requires=[],
