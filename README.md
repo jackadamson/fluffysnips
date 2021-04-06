@@ -32,3 +32,47 @@ Screenshot from 18 hours ago
 Move to: /home/user/current/directory/pictures/example_1.png
 Confirm [Y/n]: y
 ```
+
+### tablefix
+
+Reformat your markdown tables so each column is aligned to the largest cell
+
+
+#### Usage
+
+```
+Usage: tablefix [OPTIONS] TARGET
+
+Arguments:
+  TARGET  [required]
+
+Options:
+  -i, --inline     Change the file  [default: False]
+  -r, --recursive  If targeting a directory, format all markdown files in the
+                   directory  [default: False]
+
+  --help           Show this message and exit.
+```
+
+#### Example
+
+Before:
+
+```markdown
+### Diff
+
+| Flag | Description |
+| ---- | ----------- |
+| -y   | Side by side |
+| -r   | Recursive (directory) |
+```
+
+After:
+```markdown
+### Diff
+
+| Flag | Description           |
+| ---- | --------------------- |
+| -y   | Side by side          |
+| -r   | Recursive (directory) |
+```

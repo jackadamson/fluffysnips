@@ -2,8 +2,6 @@ import typer
 from pathlib import Path
 from datetime import datetime, timedelta
 
-# import sys
-
 app = typer.Typer(add_completion=False)
 
 
@@ -56,4 +54,4 @@ def main(
 
 
 if __name__ == "__main__":
-    main()
+    app()

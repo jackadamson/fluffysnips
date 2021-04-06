@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="fluffysnips",
-    version="0.0.2",
+    version="0.0.3",
     author="Jack Adamson",
     author_email="jack@mrfluffybunny.com",
     license="MIT",
@@ -23,6 +23,7 @@ setuptools.setup(
     entry_points={
         "console_scripts": [
             "mvscreenshot=fluffysnips.mvscreenshot:app",
+            "tablefix=fluffysnips.tablefix:app",
         ]
     },
 )
